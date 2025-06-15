@@ -1,0 +1,97 @@
+ <div class="modal modal__content" id="modal__mission" style="display: none;">
+    <div class="content-modal">
+      <div class="close_modal"></div>
+      <div class="wrapper-modal wpct">
+
+
+        <div class="tct toutNameF__up">
+          <div class="title-modal tCenter tUpper dFlex aCenter jCenter fuee_dK_pardesi p-r">
+            THÊM LƯỢT
+          </div> 
+        </div>
+
+        <div class="list-mission">
+
+           
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+    var facebookShare = function () {
+        $.get("chia-se-facebook.json", function (resp) {
+            setTimeout(function () {
+                getMission();
+                customAlert(resp.message)
+            }, 2000);
+        }, 'json');
+        var url = "../mung-dai-le.html";
+        var options = 'toolbar=0,status=0,resizable=1,width=626,height=436';
+        //window.open(url,'joingroup');
+
+        // kiểm tra trình duyệt web có cho phép mở popup không
+        // kiểm tra có đang nằm trong trình duyệt nhúng của facebook/app không
+        // nếu không thì mở popup
+
+        
+
+        shareOnFacebook(url);
+    };
+    var facebookJoinGroup = function (code) {
+        $.get("tham-gia-facebook.json", function (resp) {
+            setTimeout(function () {
+                getMission();
+                customAlert(resp.message)
+            }, 2000);
+        }, 'json');
+        var url = "https://www.facebook.com/groups/958640695290292/";
+        var options = 'toolbar=0,status=0,resizable=1,width=626,height=436';
+        window.open(url,'joingroup');
+    };
+    var makeTask = function (taskCode) {
+        $.post('https://hoithomattroi.vn/su-kien/mung-dai-le/kiem-tra-nhiem-vu/' + taskCode, function (resp) {
+            if(resp.status == 1) {
+                getMission();
+            }
+            customAlert(resp.message)
+        }, 'json');
+    };
+    var completeTask = function (taskCode) {
+        $.post('https://hoithomattroi.vn/su-kien/mung-dai-le/hoan-thanh-nhiem-vu/' + taskCode, function (resp) {
+            if(resp.status == 1) {
+                getMission();
+                getUserInfo();
+            }
+            customAlert(resp.message)
+        }, 'json');
+    };
+
+    function shareOnFacebook(url) {
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        
+        // Calculate popup dimensions and position
+        const popupWidth = 600;
+        const popupHeight = 400;
+        const screenWidth = window.screen.width;
+        const screenHeight = window.screen.height;
+        const left = (screenWidth - popupWidth) / 2;
+        const top = (screenHeight - popupHeight) / 2;
+
+        // Open popup window in center of the screen
+        const popup = window.open(facebookUrl, '_blank', `width=${popupWidth},height=${popupHeight},left=${left},top=${top}`);
+        
+        // Focus the popup (if allowed by the browser)
+        if (popup) {
+            popup.focus();
+        }
+    }
+        
+        // Usage
+        var shareUrl = "../mung-dai-le.html";
+        if (document.getElementById('sharefb')) {
+            document.getElementById('sharefb').addEventListener('click', function() {
+                shareOnFacebook(shareUrl);
+            });
+        }
+</script>

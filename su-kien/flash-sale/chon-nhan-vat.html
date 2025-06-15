@@ -1,0 +1,54 @@
+<div class="modal" id="modal__server" style="display: none;">
+    <div class="content-modal p-r">
+        <div class="wrapper-modal">
+            <div class="title-modal tCenter tUpper fsfumatrixB dFlex aCenter jCenter">
+                <span>chọn máy chủ</span>
+            </div>
+
+            <div class="main-mdl_gm mt-3per">
+                <div class="note m__inline">
+                    <p class="c-red">Vui lòng chọn máy chủ có nhân vật</p>
+                </div>
+                <form action="#">
+                    <div class="form-control m__inline box-input tCenter mt-3per">
+                        <select name="server-role" id="server-role">
+                                                            <option value="">Vui lòng tạo nhân vật</option>
+                                                    </select>
+                    </div>
+
+                    <div class="tCenter mt-3per">
+                        <button type="submit" class="btn-server-role btn-log bt__red tUpper aCenter jCenter btn-tranY c-pointer c-white fsfumatrixB">Xác nhận</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="close_modal"></div>
+    </div>
+</div>
+<script>
+    $('.btn-server-role').on('click', function (e) {
+        e.preventDefault();
+        var serverRole = $('#server-role').val();
+        if(!serverRole || serverRole.length<1){
+            customAlert('Vui lòng chọn nhân vật');
+            return;
+        } else {
+            $.ajax({
+                type: 'post',
+                url: 'https://hoithomattroi.vn/su-kien/flash-sale/chon-nhan-vat',
+                data:{
+                    serverRole: serverRole
+                },
+                dataType: 'json',
+                success: function (response) {
+                    alert(response.message)
+                    if(response.status === 1){
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 2000);
+                    }
+                }
+            })
+        }
+    });
+</script>
