@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi" class="__roots root__page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="ico" href="assets/frontend/home/v1/images/favicon.ico">
+    <meta name="description" content="Đăng nhập - Hơi Thở Mặt Trời, Game Mobile Demon Slayer đầu tiên tại Việt Nam" />
+    <meta name="keywords"
+        content="Demon Slayer, Hơi Thở Mặt Trời, Kimetsu no Yaiba, Thanh Gươm Diệt Quỷ, đăng nhập, login" />
+    <meta property="og:title" content="Đăng nhập - Hơi Thở Mặt Trời" />
+    <meta property="og:description" content="Đăng nhập tài khoản Hơi Thở Mặt Trời" />
+    <meta property="og:image" content="assets/frontend/home/v1/images/thumbnail-JPG.jpg" />
+    <title>Đăng nhập - Hơi Thở Mặt Trời</title>
+    <link rel="stylesheet" href="assets/frontend/home/v1/css/slick.css" />
+    <link rel="stylesheet" href="assets/frontend/home/v1/css/style3860.css?v=1" />
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .auth-form {
+            background: rgba(255, 248, 238, 0.95);
+            border: 3px solid #201a27;
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .auth-title {
+            font-family: "uvf_assasin";
+            font-size: clamp(24px, 5vw, 32px);
+            color: #201a27;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: "uvf_assasin";
+            font-size: 16px;
+            color: #201a27;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #201a27;
+            border-radius: 8px;
+            font-family: "uvf_assasin";
+            font-size: 16px;
+            color: #201a27;
+            background: #fff;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #c54a41;
+            box-shadow: 0 0 5px rgba(197, 74, 65, 0.3);
+        }
+
+        .btn-auth {
+            width: 100%;
+            padding: 15px;
+            background: url('assets/frontend/home/v1/images/bt__red.png') no-repeat center center;
+            background-size: 100% 100%;
+            border: none;
+            color: #fff;
+            font-family: "uvf_assasin";
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .btn-auth:hover {
+            background: url('assets/frontend/home/v1/images/bt__red_ac.png') no-repeat center center;
+            background-size: 100% 100%;
+            transform: translateY(-2px);
+        }
+
+        .auth-links {
+            text-align: center;
+            font-family: "uvf_assasin";
+            font-size: 14px;
+            color: #201a27;
+        }
+
+        .auth-links a {
+            color: #c54a41;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        .back-to-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: url('assets/frontend/home/v1/images/bt__black.png') no-repeat center center;
+            background-size: 100% 100%;
+            padding: 10px 20px;
+            border: none;
+            color: #fff;
+            font-family: "uvf_assasin";
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .back-to-home:hover {
+            transform: translateY(-2px);
+        }
+
+        .social-login {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .social-login p {
+            font-family: "uvf_assasin";
+            color: #201a27;
+            margin-bottom: 15px;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #201a27;
+            border-radius: 8px;
+            background: #fff;
+            color: #201a27;
+            font-family: "uvf_assasin";
+            font-size: 14px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            background: #201a27;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body class="__bodys page wpage page__ev">
+
+    <a href="home.html" class="back-to-home">
+        ← Về trang chủ
+    </a>
+
+    <div class="auth-container">
+        <div class="auth-form">
+            <h1 class="auth-title">Đăng nhập</h1>
+
+            <form id="loginForm" method="post">
+                <div class="form-group">
+                    <label for="username">Tài khoản</label>
+                    <input type="text" id="username" name="username" placeholder="Nhập tài khoản của bạn" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" id="password" name="password" placeholder="Nhập mật khẩu của bạn" required>
+                </div>
+
+                <button type="submit" class="btn-auth">Đăng nhập</button>
+            </form>
+
+            <div class="auth-links">
+                <p>Chưa có tài khoản? <a href="signup.html">Đăng ký ngay</a></p>
+                <p><a href="#" onclick="alert('Tính năng quên mật khẩu sẽ sớm được cập nhật!')">Quên mật khẩu?</a></p>
+            </div>
+
+            <div class="social-login">
+                <p>Hoặc đăng nhập bằng</p>
+                <div class="social-buttons">
+                    <a href="#" class="social-btn"
+                        onclick="alert('Tính năng đăng nhập Facebook sẽ sớm được cập nhật!')">
+                        Facebook
+                    </a>
+                    <a href="#" class="social-btn" onclick="alert('Tính năng đăng nhập Google sẽ sớm được cập nhật!')">
+                        Google
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/frontend/home/v1/js/jquery.min.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username && password) {
+                alert('Đăng nhập thành công! (Đây chỉ là giao diện demo)');
+                // Redirect to home page
+                window.location.href = 'home.html';
+            } else {
+                alert('Vui lòng nhập đầy đủ thông tin!');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
